@@ -92,6 +92,12 @@ def main():
     def bg_window():
         """set bg and text"""
         win.blit(bg, (0, 0))
+
+        for enemy in enemies:
+            enemy.draw(win)
+
+        player.draw(win)
+
         # text
         miss_text = main_font.render(f"Missed: {miss}", 1, (255, 255, 255))
         level_text = main_font.render(f"Level: {level}", 1, (255, 255, 255))
@@ -99,11 +105,6 @@ def main():
         #ตั้งค่าตำแหน่งของtext
         win.blit(miss_text, (10, 10))
         win.blit(level_text, (width - level_text.get_width() - 10, 10))
-
-        for enemy in enemies:
-            enemy.draw(win)
-
-        player.draw(win)
 
         pygame.display.update()
 
