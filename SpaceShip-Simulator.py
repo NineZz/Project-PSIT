@@ -20,10 +20,10 @@ bg = pygame.transform.scale(pygame.image.load(os.path.join("assets", "space_bg.j
 #           ^^^ตั้งค่าขนาดภาพbgให้พอดีกับdisplay                           ชื่อไฟล์BG^^^
 menu_bg = pygame.transform.scale(pygame.image.load(os.path.join("assets", "menu_bg.jpg")), (width, height))
 #Ship
-enemy_00 = pygame.image.load(os.path.join("assets", "enemy00_sprite.png"))
-enemy_01 = pygame.image.load(os.path.join("assets", "enemy00_sprite.png"))
-enemy_02 = pygame.image.load(os.path.join("assets", "enemy00_sprite.png"))
-player_ship = pygame.image.load(os.path.join("assets", "player01_sprite.png"))
+enemy_00 = pygame.image.load(os.path.join("assets", "enemy_flyer_sprite.png"))
+enemy_01 = pygame.image.load(os.path.join("assets", "enemy_shooter_sprite.png"))
+enemy_02 = pygame.image.load(os.path.join("assets", "enemy_Twin_sprite.png"))
+player_ship = pygame.image.load(os.path.join("assets", "player_main_sprite.png"))
 #Lasers
 laser_00 = pygame.image.load(os.path.join("assets", "pixel_laser_red.png"))
 laser_01 = pygame.image.load(os.path.join("assets", "pixel_laser_green.png"))
