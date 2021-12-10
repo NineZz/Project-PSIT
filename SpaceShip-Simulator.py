@@ -12,8 +12,8 @@ win = pygame.display.set_mode((width, height))
 pygame.display.set_caption("SpaceShip-Simulator")
 
 #icon
-# icon = pygame.image.load(os.path.join("assets", "icon.jpg"))
-# pygame.display.set_icon(icon)
+icon = pygame.image.load(os.path.join("assets", "icon.png"))
+pygame.display.set_icon(icon)
 
 #Images
 bg = pygame.transform.scale(pygame.image.load(os.path.join("assets", "space_bg.jpg")), (width, height))
