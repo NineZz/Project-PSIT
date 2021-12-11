@@ -175,7 +175,7 @@ def main():
     activate = True
     fps = 60
     level = 0
-    miss = 3
+    miss = 10
     main_font = pygame.font.SysFont("Magneto", 40)
     lose_font = pygame.font.SysFont("Magneto", 50)
 
