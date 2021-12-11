@@ -129,14 +129,25 @@ class Player(Ship):
                         if laser in self.lasers:
                             self.lasers.remove(laser)
 
-class Enemy(Ship):
-    Enemy_match = {"00": (enemy_00, laser_00),
-                 "01": (enemy_01, laser_01),
-                 "02": (enemy_02, laser_02)}
+    def draw(self, window):
+        super().draw(window)
+        self.healthbar(window)
 
-    def __init__(self, x, y, color, health=100):
+    def healthbar(self, window):
+        pygame.draw.rect(window, (255,0,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width(), 10))
+        pygame.draw.rect(window, (0,255,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width() * (self.health/self.max_health), 10))
+
+
+class Enemy(Ship):
+    Enemy_match = {
+                "00": (enemy_00, laser_00),
+                "01": (enemy_01, laser_01),
+                "02": (enemy_02, laser_02)
+                }
+
+    def __init__(self, x, y, number, health=100):
         super().__init__(x, y, health)
-        self.ship_img, self.laser_img = self.Enemy_match[color]
+        self.ship_img, self.laser_img = self.Enemy_match[number]
         self.mask = pygame.mask.from_surface(self.ship_img)
 
     def move(self, vel):
@@ -258,7 +269,7 @@ def main():
                 miss -= 1
                 enemies.remove(enemy)
 
-            player.move_lasers(-laser_vel, enemies)#laser_velติดลบ เพื่อที่จะทำให้กระสุนไปด้านบน
+        player.move_lasers(-laser_vel, enemies)#laser_velติดลบ เพื่อที่จะทำให้กระสุนไปด้านบน
 
 def main_menu():
     """function mainmenu"""
