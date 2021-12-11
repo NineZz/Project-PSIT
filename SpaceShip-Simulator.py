@@ -5,6 +5,12 @@ import os
 import time
 import random
 
+
+
+# ------------------------------------------------------------------------------
+#   Import File
+# ------------------------------------------------------------------------------
+
 #Display
 pygame.font.init()
 width, height = 750, 750
@@ -26,10 +32,16 @@ enemy_02 = pygame.image.load(os.path.join("assets", "enemy_Twin_sprite.png"))
 player_ship = pygame.image.load(os.path.join("assets", "player_main_sprite.png"))
 #Lasers
 laser_00 = pygame.image.load(os.path.join("assets", "pixel_laser_red.png"))
-laser_01 = pygame.image.load(os.path.join("assets", "pixel_laser_green.png"))
-laser_02 = pygame.image.load(os.path.join("assets", "pixel_laser_blue.png"))
-player_laser = pygame.image.load(os.path.join("assets", "pixel_laser_yellow.png"))
+laser_01 = pygame.image.load(os.path.join("assets", "enemy_shooter_laser_sprite.png"))
+laser_02 = pygame.image.load(os.path.join("assets", "enemy_twin_laser_sprite.png"))
+player_laser = pygame.image.load(os.path.join("assets", "player_laser_sprite.png"))
 # name = pygame.image.load(os.path.join("assets", "icon.jpg"))
+
+
+
+# ------------------------------------------------------------------------------
+#   Class
+# ------------------------------------------------------------------------------
 
 class Ship:
     def __init__(self, x, y, health=100):
@@ -70,6 +82,12 @@ class Enemy(Ship):
 
     def move(self, vel):
         self.y += vel
+
+
+
+# ------------------------------------------------------------------------------
+#   Command & Menu
+# ------------------------------------------------------------------------------
 
 def main():
     """function display"""
