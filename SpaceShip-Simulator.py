@@ -51,6 +51,7 @@ def bgm_game(): #เสียง BGM ในตัวเกม
     pygame.mixer.music.play(-1)
 
 laser_sfx = pygame.mixer.Sound("BGMandSFX/SFX_LaserBlastQuick PE1095107.ogg")
+explote_sfx = pygame.mixer.Sound("BGMandSFX/SFX_sf_laser_explosion.ogg")
 
 # ------------------------------------------------------------------------------
 #   Class
@@ -138,6 +139,7 @@ class Player(Ship):
             else:
                 for obj in objs:
                     if laser.collision(obj):
+                        pygame.mixer.Sound.play(explote_sfx)
                         objs.remove(obj)
                         if laser in self.lasers:
                             self.lasers.remove(laser)
