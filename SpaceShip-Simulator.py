@@ -41,13 +41,16 @@ player_laser = pygame.image.load(os.path.join("assets", "player_laser_sprite.png
 #BGM and SFX
 pygame.mixer.init()
 def bgm_mainmenu(): #เสียง BGM หน้า main menu
-    pygame.mixer.music.load(os.path.join("BGMandSFX", "BGMandSFX_BGM_hortwire - Reconfig.ogg"))
+    pygame.mixer.music.load(os.path.join("BGMandSFX", "BGM_hortwire - Reconfig.ogg"))
     pygame.mixer.music.set_volume(0.1)
     pygame.mixer.music.play(-1)
+
 def bgm_game(): #เสียง BGM ในตัวเกม
-    pygame.mixer.music.load(os.path.join("BGMandSFX", "BGMandSFX_BGM_unnamed. - Sundown.ogg"))
+    pygame.mixer.music.load(os.path.join("BGMandSFX", "BGM_unnamed. - Sundown.ogg"))
     pygame.mixer.music.set_volume(0.1)
     pygame.mixer.music.play(-1)
+
+laser_sfx = pygame.mixer.Sound("BGMandSFX/SFX_LaserBlastQuick PE1095107.ogg")
 
 # ------------------------------------------------------------------------------
 #   Class
@@ -110,6 +113,7 @@ class Ship:
             laser = Laser(self.x, self.y, self.laser_img)
             self.lasers.append(laser)
             self.cool_down_counter = 1
+            pygame.mixer.Sound.play(laser_sfx)
 
     def get_width(self):
         return self.ship_img.get_width()
@@ -251,7 +255,7 @@ def main():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                activate = False
+                main_menu()
 
         #set keys
         keys = pygame.key.get_pressed()
