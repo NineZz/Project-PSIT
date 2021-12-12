@@ -4,7 +4,7 @@ import pygame
 import os
 import time
 import random
-
+from pygame import mixer
 
 
 # ------------------------------------------------------------------------------
@@ -38,7 +38,16 @@ laser_01 = pygame.image.load(os.path.join("assets", "enemy_shooter_laser_sprite.
 laser_02 = pygame.image.load(os.path.join("assets", "enemy_twin_laser_sprite.png"))
 player_laser = pygame.image.load(os.path.join("assets", "player_laser_sprite.png"))
 
-
+#BGM and SFX
+pygame.mixer.init()
+def bgm_mainmenu(): #เสียง BGM หน้า main menu
+    pygame.mixer.music.load(os.path.join("BGMandSFX", "BGMandSFX_BGM_hortwire - Reconfig.ogg"))
+    pygame.mixer.music.set_volume(0.1)
+    pygame.mixer.music.play(-1)
+def bgm_game(): #เสียง BGM ในตัวเกม
+    pygame.mixer.music.load(os.path.join("BGMandSFX", "BGMandSFX_BGM_unnamed. - Sundown.ogg"))
+    pygame.mixer.music.set_volume(0.1)
+    pygame.mixer.music.play(-1)
 
 # ------------------------------------------------------------------------------
 #   Class
@@ -178,6 +187,7 @@ def main():
     miss = 10
     main_font = pygame.font.SysFont("Magneto", 40)
     lose_font = pygame.font.SysFont("Magneto", 50)
+    bgm_game()
 
     enemies = []
     wave_length = 5
@@ -227,6 +237,7 @@ def main():
         if lose: #เมื่อหน้าจอขึ้นว่าแพ้เสร็จ จะกลับเข้าสู่หน้า menu
             if lose_count > fps*3:
                 activate = False
+                bgm_mainmenu()
             else:
                 continue
 
@@ -275,6 +286,7 @@ def main_menu():
     """function mainmenu"""
     title_font = pygame.font.SysFont("Magneto", 40)
     menu_font = pygame.font.SysFont("Magneto", 48)
+    bgm_mainmenu()
     activate = True
 
     while activate:
